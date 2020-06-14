@@ -1,0 +1,112 @@
+sxhkdrc config
+### ACTIONS ###
+# wallpaper
+ctrl + shift + F5
+	nitrogen --set-zoom-fill --random --head=0 && nitrogen --set-zoom-fill --random --head=1 && nitrogen --set-zoom-fill --random --head=2
+
+# Window Switcher / Application Laucher
+F10
+	rofi -show combi
+
+# Launch Applications
+ctrl + {F9,F10,F11,F12}
+	{thunar, firefox, konsole, code} &
+
+# Mute Microphone
+#XF86AudioMicMute
+
+# Shutdown
+XF86RFKill
+	systemctl suspend
+
+# Search
+XF86Webcam
+	sudo beep -l30 && firefox-developer-edition --search "$(zenity --entry --text "What do you want to search for?")"
+ctrl + XF86Search
+	sudo beep -l30 && mpv --loop-file --no-fs --ytdl-format=best ytdl://ytsearch:"$(zenity --entry --text "Play video from youtube:" --entry-text "Autumn - The Erised")"
+
+# Decrease Screen Brightness
+XF86MonBrightnessDown
+	echo $(($(cat /sys/class/backlight/amdgpu_bl0/brightness) - 5)) | tee /sys/class/backlight/amdgpu_bl0/brightness
+
+# Increase Screen Brightness
+XF86MonBrightnessUp
+	echo $(($(cat /sys/class/backlight/amdgpu_bl0/brightness) + 5)) | tee /sys/class/backlight/amdgpu_bl0/brightness
+
+# Lock
+super + l
+	i3lock-fancy-rapid 5 5 -u
+
+super + shift + l
+	systemctl suspend && i3lock-fancy-rapid 5 5 -u
+	 
+## sxhkd
+# make sxhkd reload its configuration files
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# Resize Floating Window
+super + F1
+	xdotool getactivewindow windowsize {1854 1024 windowmove 10 40,1658 998 windowmove 1930 40,windowmove 3610 10}
+
+# node to above/below layer
+{KP_Add, KP_Subtract}
+	bspc node -l {above, below}
+
+# quit or kill
+super + {_,shift + }w
+	bspc node -{c,k} && sleep 0.2
+
+# move node to monitor
+super + shift + {Left,Right}
+	bspc node --to-monitor {west,east} --focus
+
+# swap desktop with desktop n
+super + alt + {1-9}
+	bspc desktop -s ^{1-9}
+
+# prev/next desktop
+super + {Left, Right}
+	bspc desktop -f {prev, next}
+
+# prev/next desktop occupied
+super + alt + {Left, Right}
+	bspc desktop -f {prev,next}.occupied
+
+## state/flags
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+## focus/swap
+## focus the node in the given direction
+#super + {Left,Down,Up,Right}
+#	bspc node -f {west,south,north,east}
+
+# focus the next/previous node - on same desktop
+super + ctrl + {Left,Right}
+	bspc node -f {prev, next}.local
+
+# focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# send to the given desktop
+super + shift + {1-9,0}
+	bspc node -d '^{1-9,10}'
+
+# focus or send to the given desktop
+super + {1-9,0}
+	bspc desktop -f '^{1-9,10}'
+## preselect
+# preselect the direction
+ctrl + {Left,Down,Up,Right}
+	bspc node -p {west,south,north,east}
+
+# cancel the preselection for the focused node
+ctrl + space
+	bspc node -p cancel
+
+# change window gap
+alt + {1,2,3,4,5}
+	bspc config window_gap {0,5,10,15,20}

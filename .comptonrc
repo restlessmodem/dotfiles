@@ -1,0 +1,38 @@
+shadow-opacity = 0.2;
+shadow-red = 0.0;
+shadow-green = 0.0;
+shadow-blue = 0.0;
+
+frame-opacity = 0.75;
+
+shadow = true;
+shadow-radius = 0.5;
+shadow-offset-x = 1;
+shadow-offset-y = 1;
+shadow-exclude = [
+	"name *= 'noshadow'",
+];
+
+use-ewmh-active-win = true;
+#detect-client-opacity = true;
+backend = "xr_glx_hybrid";
+use-damage = true;
+
+unredir-if-possible = false;
+refresh-rate = 0;
+#vsync = false;
+vsync = true;
+#vsync = "opengl-mswc";
+#dbe = true;
+
+opacity-rule = [
+	"90:class_g *= 'feh'",
+	"80:class_g *= 'Thunar'",
+	"95:class_g *= 'Code - OSS'",
+	"85:class_g *= 'Deezer'",
+	"90:class_g *= 'Zenity'",
+	"90:class_g *= 'Rofi'",
+	"98:class_g *= 'Standard Notes'",
+	"75:class_g *= 'St'",
+	"80:class_g *= 'Polybar'"
+];

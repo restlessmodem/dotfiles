@@ -1,0 +1,42 @@
+[global]
+    font = Source Code Pro 11
+    format = "<b><u>%s</u></b>\n%b"
+    ignore_newline = no
+    padding = 5
+    horizontal_padding = 7
+    transparency = 30
+    sort = yes
+    indicate_hidden = yes
+    alignment = center
+    show_age_threshold = 60;
+    geometry = "300x10-10+10"
+    idle_threshold = 200
+    sticky_history = false
+    line_height = 3
+    word_wrap = yes
+    markup = yes
+    sort = yes
+    follow = mouse
+    frame_width = 3
+    frame_color = "#aaaaaa"
+    separator_height = 3
+    separator_color = frame
+
+[urgency_low]
+    background = "#294029"
+    foreground = "#b3b3b3"
+    timeout = 5
+    markup = no
+
+[urgency_normal]
+    background = "#151525"
+    foreground = "#ffffff"
+    timeout = 10
+    markup = yes
+
+[urgency_critical]
+    background = "#991212"
+    foreground = "#FFFFFF"
+    transparency = 15
+    timeout = 0
+    sticky_history = true
