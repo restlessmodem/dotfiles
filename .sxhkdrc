@@ -10,7 +10,7 @@ F10
 
 # Launch Applications
 ctrl + {F9,F10,F11,F12}
-	{thunar, firefox, st, code} &
+	{thunar, firefox-nightly, konsole, code} &
 
 # Mute Microphone
 #XF86AudioMicMute
