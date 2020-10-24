@@ -54,9 +54,7 @@ bspc rule -a "de.hhbk.Main" state=floating
 xset -dpms s off
 setxkbmap -layout de &
 rm -f /home/restlessmodem/Desktop
-wmname LG3D
 export PATH_TO_FX=/home/restlessmodem/Something/javafx-sdk-14.0.1/lib/
-#/home/restlessmodem/pairKeyboard.sh &
 
 # starting applications
 bspc monitor -f ^1 
