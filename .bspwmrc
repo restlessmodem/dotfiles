@@ -14,8 +14,8 @@ if xrandr -q | grep -sq "DVI-I-1-1 connected"; then
 elif ! xrandr -q | grep -sq "DVI-I-1-1 connected" && xrandr -q | grep -sq "HDMI-A-0 connected"; then
     # TV Mode
     xrandr --output eDP --mode 1920x1080 --pos 3840x0 --rotate normal --output HDMI-A-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal
-    bspc monitor HDMI-A-0 -d 4 5 6
     bspc monitor eDP -d 1 2 3
+    bspc monitor HDMI-A-0 -d 4 5 6
     sudo light -S 10
     blueberry &
 fi
@@ -47,8 +47,7 @@ bspc config active_border_color '#333333'
 bspc config focused_border_color '#404050'
 bspc config normal_border_color '#333333'
 bspc rule -a jetbrains-idea-ce state=floating
-bspc rule -a "com.oracle.javafx.scenebuilder.app.SceneBuilderApp" state=floating
-bspc rule -a "de.hhbk.Main" state=floating
+bspc rule -a Anki state=floating
 
 # misc config & tools
 xset -dpms s off
