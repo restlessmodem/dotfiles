@@ -1,5 +1,9 @@
 sxhkdrc config
 ### ACTIONS ###
+# push to talk
+KP_Delete
+	pamixer -t --default-source	
+
 # wallpaper
 ctrl + shift + F5
 	nitrogen --set-zoom-fill --random --head=0 && nitrogen --set-zoom-fill --random --head=1 && nitrogen --set-zoom-fill --random --head=2

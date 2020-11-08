@@ -20,14 +20,6 @@ elif ! xrandr -q | grep -sq "DVI-I-1-1 connected" && xrandr -q | grep -sq "HDMI-
     blueberry &
 fi
 
-# starting system components
-sxhkd -c /home/restlessmodem/Development/dotfiles/.sxhkdrc &
-stalonetray -geometry "+1890+1050" &
-$HOME/Development/dotfiles/polybar/launch.sh &
-picom --config /home/restlessmodem/Development/dotfiles/.picomrc &
-dunst -config /home/restlessmodem/Development/dotfiles/.dunstrc -shrink -key Super_R -all_key F1 &
-kdeconnect-indicator &
-
 # bspwm config
 bspc config border_width 1
 bspc config window_gap 10
@@ -51,9 +43,18 @@ bspc rule -a Anki state=floating
 
 # misc config & tools
 xset -dpms s off
-setxkbmap -layout de &
+while true; do setxkbmap -layout de; sleep 10; done &
 rm -f /home/restlessmodem/Desktop
 export PATH_TO_FX=/home/restlessmodem/Something/javafx-sdk-14.0.1/lib/
+rm -d /home/restlessmodem/Desktop
+
+# starting system components
+#stalonetray -geometry "+1890+1050" &
+$HOME/Development/dotfiles/polybar/launch.sh &
+picom --config /home/restlessmodem/Development/dotfiles/.picomrc &
+dunst -config /home/restlessmodem/Development/dotfiles/.dunstrc -shrink -key Super_R -all_key F1 &
+kdeconnect-indicator &
+sleep 5 && sxhkd -c /home/restlessmodem/Development/dotfiles/.sxhkdrc &
 
 # starting applications
 bspc monitor -f ^1 
