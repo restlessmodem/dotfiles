@@ -6,6 +6,7 @@ sudo light -S 25
 if xrandr -q | grep -sq "DVI-I-1-1 connected"; then
     # Desk Mode
     xrandr --output HDMI-A-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-I-1-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output eDP --mode 1920x1080 --pos 3840x0 --rotate normal
+    #xrandr --output eDP --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-A-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DVI-I-1-1 --mode 1920x1080 --pos 3840x0 --rotate normal
     bspc monitor HDMI-A-0 -d 1 2 3
     bspc monitor DVI-I-1-1 -d 4 5 6
     bspc monitor eDP -d 7 8 9
@@ -38,23 +39,19 @@ bspc config presel_feedback_color "#000000"
 bspc config active_border_color '#333333'
 bspc config focused_border_color '#404050'
 bspc config normal_border_color '#333333'
-bspc rule -a jetbrains-idea-ce state=floating
-bspc rule -a Anki state=floating
+bspc rule -a "Yubico Authenticator" state=floating
+bspc rule -a "Blueberry.py" state=floating
 
 # misc config & tools
 xset -dpms s off
 while true; do setxkbmap -layout de; sleep 10; done &
 rm -f /home/restlessmodem/Desktop
-export PATH_TO_FX=/home/restlessmodem/Something/javafx-sdk-14.0.1/lib/
-rm -d /home/restlessmodem/Desktop
 
 # starting system components
-#stalonetray -geometry "+1890+1050" &
 $HOME/Development/dotfiles/polybar/launch.sh &
 picom --config /home/restlessmodem/Development/dotfiles/.picomrc &
 dunst -config /home/restlessmodem/Development/dotfiles/.dunstrc -shrink -key Super_R -all_key F1 &
-kdeconnect-indicator &
-sleep 5 && sxhkd -c /home/restlessmodem/Development/dotfiles/.sxhkdrc &
+sxhkd -c /home/restlessmodem/Development/dotfiles/.sxhkdrc &
 
 # starting applications
 bspc monitor -f ^1 
